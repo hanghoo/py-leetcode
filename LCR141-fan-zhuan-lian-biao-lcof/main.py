@@ -11,5 +11,4 @@ class Solution:
         last = self.trainningPlan(head.next)
         head.next.next = head
         head.next = None
-
         return last
