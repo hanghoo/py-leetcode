@@ -4,12 +4,19 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def reverse(self, head):
-        if head == None or head.next == None:
-            return head
-        new_head = self.reverse(head.next)
-        head.next.next = head
-        head.next = None
-
-
+    left = None
+    res = True
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        self.left = head
+        self.traverse(head)
+        return self.res
+    
+    def traverse(self, right: Optional[ListNode]):
+        if right is None:
+            return
+        
+        self.traverse(right.next)
+
+        if self.left.val != right.val:
+            self.res = False
+        self.left = self.left.next
